@@ -1,5 +1,23 @@
 # DotNetAuthClaimAngularApp
 
+## Video Name and URL:
+ASP .NET Core 5 Web API step by step & Integrate in Angular 11 | Secure API with JWT Token
+https://www.youtube.com/watch?v=BIk7PssaDe8
+
+
+### Tutorial Github Repository
+https://github.com/DevBugFix/Web_Token_auth
+
+
+### CLI Commands Used:
+- ng new DotNetAuthClaimAngularApp 
+    - Routing: Yes
+    - Stylesheet format: SCSS
+- ng serve
+- npm install bootstrap
+- ng g c components/login
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
 
 ## Development server
