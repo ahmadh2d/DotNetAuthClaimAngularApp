@@ -16,6 +16,11 @@ https://github.com/DevBugFix/Web_Token_auth
 - ng serve
 - npm install bootstrap
 - ng g c components/login
+- ng g s services/user
+- ng g s guards/auth
+
+New Packages User:
+- Bootstrap 5
 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
