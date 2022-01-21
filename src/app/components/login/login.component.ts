@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserRoles } from 'src/app/enums/UserRoles';
 import { Constants } from 'src/app/Helpers/constants';
+import { User } from 'src/app/Models/user';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -25,10 +27,15 @@ export class LoginComponent implements OnInit {
     const password: string = this.loginForm.controls["password"].value;
 
     this.userService.login(email, password).subscribe({
-      next: (data : any) => {
+      next: (data: any) => {
         if (data.responseStatusCode === 1) {
-          localStorage.setItem(Constants.USER_KEY, JSON.stringify(data.dataSet));
-          this.router.navigate(["/user-management"]);
+          var user = data.dataSet as User;
+          localStorage.setItem(Constants.USER_KEY, JSON.stringify(user));
+          
+          if (user.role === UserRoles.ADMIN)
+            this.router.navigate(["/all-users-management"]);
+          else if (user.role === UserRoles.USER)
+            this.router.navigate(["/users-management"]);
         }
 
         console.log(data);

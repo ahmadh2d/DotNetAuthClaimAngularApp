@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { UserRoles } from './enums/UserRoles';
 import { Constants } from './Helpers/constants';
+import { User } from './Models/user';
 
 @Component({
   selector: 'app-root',
@@ -16,5 +18,17 @@ export class AppComponent {
   get isUserLogin() {
     var user = localStorage.getItem(Constants.USER_KEY);
     return user && user.length > 0;
+  }
+
+  get user() : User {
+    return JSON.parse(localStorage.getItem(Constants.USER_KEY)) as User;
+  }
+
+  get isAdmin() : boolean {
+    return this.user.role === UserRoles.ADMIN;
+  }
+  
+  get isUser() : boolean {
+    return this.user.role === UserRoles.USER;
   }
 }
