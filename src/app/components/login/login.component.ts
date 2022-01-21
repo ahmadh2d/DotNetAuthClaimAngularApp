@@ -32,9 +32,9 @@ export class LoginComponent implements OnInit {
           var user = data.dataSet as User;
           localStorage.setItem(Constants.USER_KEY, JSON.stringify(user));
           
-          if (user.role === UserRoles.ADMIN)
+          if (user.roles.indexOf(UserRoles.ADMIN) > -1)
             this.router.navigate(["/all-users-management"]);
-          else if (user.role === UserRoles.USER)
+          else if (user.roles.indexOf(UserRoles.USER) > -1)
             this.router.navigate(["/users-management"]);
         }
 

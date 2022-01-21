@@ -28,9 +28,9 @@ export class RegisterComponent implements OnInit {
     const fullName: string = this.registerForm.controls["fullName"].value;
     const email: string = this.registerForm.controls["email"].value;
     const password: string = this.registerForm.controls["password"].value;
-    const role: string = this.roleList.filter(x => x.isSelected)[0].roleName;
+    const roles: string[] = this.roleList.filter(x => x.isSelected).map(x => x.roleName);
 
-    this.userService.register(fullName, email, password, role).subscribe({
+    this.userService.register(fullName, email, password, roles).subscribe({
       next: data => {
         console.log(data);
         this.router.navigate(["/login"]);
@@ -49,6 +49,10 @@ export class RegisterComponent implements OnInit {
   }
 
   onChangeRole(role: Role) {
-    this.roleList.forEach(r => { if (r.roleName == role.roleName) r.isSelected = true; else r.isSelected = false });
+    this.roleList.forEach(r => { if (r.roleName == role.roleName) r.isSelected = !role.isSelected; });
+  }
+
+  get isRoleSelected() {
+    return this.roleList.filter(x => x.isSelected).length > 0;
   }
 }

@@ -31,12 +31,12 @@ export class UserService {
     return this.httpClient.post<ResponseModel>(`${this.baseUrlAPI}/LoginUser`, body, httpOptions);
   }
 
-  public register(fullName: string, email: string, password: string, role: string) {
+  public register(fullName: string, email: string, password: string, roles: string[]) {
     const body = {
       fullName: fullName,
       email: email,
       password: password,
-      role: role
+      roles: roles
     };
 
     return this.httpClient.post<ResponseModel>(`${this.baseUrlAPI}/RegisterUser`, body, httpOptions);

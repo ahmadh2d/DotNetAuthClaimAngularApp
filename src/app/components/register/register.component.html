@@ -25,14 +25,14 @@
               </div>
               <div>
                 <div class="form-check form-check-inline" *ngFor="let role of roleList, let index = index">
-                  <input class="form-check-input" type="radio" name="role" id={{index}} value="{{role.roleName}}" [checked]="role.isSelected" (change)="onChangeRole(role)">
+                  <input class="form-check-input" type="checkbox" name="role" id={{index}} value="{{role.roleName}}" [checked]="role.isSelected" (change)="onChangeRole(role)">
                   <label class="form-check-label" for={{index}}>
                     {{role.roleName}}
                   </label>
                 </div>
               </div>
             </div>
-            <button type="submit" class="btn btn-primary" [disabled]="!registerForm.valid">Submit</button>
+            <button type="submit" class="btn btn-primary" [disabled]="!registerForm.valid || !isRoleSelected">Submit</button>
           </form>
         </div>
       </div>
